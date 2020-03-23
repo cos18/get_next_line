@@ -1,4 +1,5 @@
 *.pdf
+test*
 
 # Created by https://www.gitignore.io/api/c,code,macos
 # Edit at https://www.gitignore.io/?templates=c,code,macos
@@ -93,4 +94,3 @@ Temporary Items
 .apdisk
 
 # End of https://www.gitignore.io/api/c,code,macos
-pft_2019/
