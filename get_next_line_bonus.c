@@ -6,7 +6,7 @@
 /*   By: sunpark <sunpark@student.42.kr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/22 16:19:58 by sunpark           #+#    #+#             */
-/*   Updated: 2020/03/24 17:51:07 by sunpark          ###   ########.fr       */
+/*   Updated: 2020/03/24 18:39:01 by sunpark          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,7 +61,7 @@ int	get_next_line(int fd, char **line)
 		free(str[fd]);
 		str[fd] = tmp_str;
 	}
-	if (len < 0)
+	if (len == -1)
 		return (ERROR);
 	if (len == 0 && ft_strlen(str[fd]) == 0)
 		return (final_reset(line));
