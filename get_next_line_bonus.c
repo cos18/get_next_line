@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: sunpark <sunpark@student.42.kr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/03/22 16:19:58 by sunpark           #+#    #+#             */
-/*   Updated: 2020/03/26 23:47:13 by sunpark          ###   ########.fr       */
+/*   Created: 2020/03/22 16:22:58 by sunpark           #+#    #+#             */
+/*   Updated: 2020/03/27 22:22:54 by sunpark          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,8 +31,9 @@ int	set_new_str(char **line, char **save)
 	}
 	(*line)[locate] = '\0';
 	result = (((*save)[size] == '\n') ? READ : READ_EOF);
-	tmp_str = (result ? ft_strdup((*save) + size + 1) : ft_strnul());
-	free(*save);
+	tmp_str = (result ? ft_strpush(*save, size + 1) : ft_strnul());
+	if (result == READ_EOF)
+		free(*save);
 	*save = tmp_str;
 	return (result);
 }
@@ -50,12 +51,14 @@ int	get_next_line(int fd, char **line)
 	static char	*str[FD_SIZE];
 	char		*tmp_str;
 
-	if (fd < 0 || !line || fd >= FD_SIZE || BUFFER_SIZE <= 0 || read(fd, buff, 0))
+	if (fd < 0 || !line || fd >= FD_SIZE || \
+			BUFFER_SIZE <= 0 || read(fd, buff, 0))
 		return (ERROR);
 	if (!str[fd])
 		str[fd] = ft_strnul();
-  len = 0;
-	while (!(ft_strchr(str[fd], '\n')) && (len = read(fd, buff, BUFFER_SIZE)) > 0)
+	len = 0;
+	while (!(ft_strchr(str[fd], '\n')) && \
+			((len = read(fd, buff, BUFFER_SIZE)) > 0))
 	{
 		buff[len] = '\0';
 		tmp_str = ft_strjoin(str[fd], buff);

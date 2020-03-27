@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line_utils.c                              :+:      :+:    :+:   */
+/*   get_next_line_utils_bonus.c                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sunpark <sunpark@student.42.kr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/03/22 16:21:12 by sunpark           #+#    #+#             */
-/*   Updated: 2020/03/23 21:33:55 by sunpark          ###   ########.fr       */
+/*   Created: 2020/03/24 16:21:12 by sunpark           #+#    #+#             */
+/*   Updated: 2020/03/27 22:23:24 by sunpark          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,18 +73,17 @@ char	*ft_strchr(const char *s, int c)
 	return ((is_end) ? NULL : now);
 }
 
-char	*ft_strdup(const char *s1)
+char	*ft_strpush(char *s, int push)
 {
-	char	*re;
-	size_t	locate;
+	int	locate;
 
-	re = (char *)malloc(ft_strlen(s1) + 1);
-	if (re)
+	locate = 0;
+	while (s[locate + push])
 	{
-		locate = -1;
-		while (++locate < ft_strlen(s1))
-			re[locate] = s1[locate];
-		re[locate] = '\0';
+		s[locate] = s[locate + push];
+		locate++;
 	}
-	return (re);
+	while (s[locate])
+		s[locate++] = '\0';
+	return (s);
 }
