@@ -6,11 +6,11 @@
 /*   By: sunpark <sunpark@student.42.kr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/22 16:22:58 by sunpark           #+#    #+#             */
-/*   Updated: 2020/03/27 22:22:54 by sunpark          ###   ########.fr       */
+/*   Updated: 2020/03/28 23:40:45 by sunpark          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "get_next_line.h"
+#include "get_next_line_bonus.h"
 
 int	set_new_str(char **line, char **save)
 {
