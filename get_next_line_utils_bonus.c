@@ -6,7 +6,7 @@
 /*   By: sunpark <sunpark@student.42.kr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/24 16:21:12 by sunpark           #+#    #+#             */
-/*   Updated: 2020/03/28 23:30:19 by sunpark          ###   ########.fr       */
+/*   Updated: 2020/04/14 16:40:45 by sunpark          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,11 +62,11 @@ char	*ft_strchr(const char *s, int c)
 	while (1)
 	{
 		if (*now == c)
-			break;
+			break ;
 		if (*now == '\0')
 		{
 			is_end = 1;
-			break;
+			break ;
 		}
 		now++;
 	}
