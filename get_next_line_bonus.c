@@ -6,7 +6,7 @@
 /*   By: sunpark <sunpark@student.42.kr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/22 16:22:58 by sunpark           #+#    #+#             */
-/*   Updated: 2020/03/28 23:40:45 by sunpark          ###   ########.fr       */
+/*   Updated: 2020/04/15 14:39:39 by sunpark          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,16 +31,27 @@ int	set_new_str(char **line, char **save)
 	}
 	(*line)[locate] = '\0';
 	result = (((*save)[size] == '\n') ? READ : READ_EOF);
-	tmp_str = (result ? ft_strpush(*save, size + 1) : ft_strnul());
-	if (result == READ_EOF)
+	tmp_str = (result ? ft_strpush(*save, size + 1) : NULL);
+	if (result == READ_EOF && *save)
 		free(*save);
 	*save = tmp_str;
 	return (result);
 }
 
-int	final_reset(char **line)
+int	error_handling(char **save)
+{
+	if (*save)
+		free(*save);
+	*save = NULL;
+	return (ERROR);
+}
+
+int	final_reset(char **line, char **save)
 {
 	*line = ft_strnul();
+	if (*save)
+		free(*save);
+	*save = NULL;
 	return (READ_EOF);
 }
 
@@ -62,12 +73,13 @@ int	get_next_line(int fd, char **line)
 	{
 		buff[len] = '\0';
 		tmp_str = ft_strjoin(str[fd], buff);
-		free(str[fd]);
+		if (str[fd])
+			free(str[fd]);
 		str[fd] = tmp_str;
 	}
 	if (len < 0)
-		return (ERROR);
+		return (error_handling(&(str[fd])));
 	if (len == 0 && str[fd][0] == '\0')
-		return (final_reset(line));
+		return (final_reset(line, &(str[fd])));
 	return (set_new_str(line, &(str[fd])));
 }

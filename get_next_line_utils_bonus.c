@@ -6,11 +6,11 @@
 /*   By: sunpark <sunpark@student.42.kr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/24 16:21:12 by sunpark           #+#    #+#             */
-/*   Updated: 2020/04/14 16:40:45 by sunpark          ###   ########.fr       */
+/*   Updated: 2020/04/15 14:33:02 by sunpark          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "get_next_line.h"
+#include "get_next_line_bonus.h"
 
 char	*ft_strnul(void)
 {
